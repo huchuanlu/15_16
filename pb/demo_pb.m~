@@ -1,0 +1,10 @@
+clc;
+clear;
+tic;
+image_name = '55'
+I = imread(['image\',image_name,55.bmp');
+I = im2double(I);
+[pb,theta] = pbCGTG(I);
+save pb_299091 pb;
+imwrite(pb,'299091_pb.bmp','bmp');
+toc;

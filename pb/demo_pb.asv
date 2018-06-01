@@ -1,0 +1,15 @@
+clc;
+clear;
+inpath = '\image\*.jpg';
+% matpath = 'E:\My Documents\MATLAB\Saliency\binarymaskimage\*.jpg';
+% outpath = 'E:\My Documents\MATLAB\Saliency\binarymaskimage\*.jpg';
+dir_im = dir(inpath);
+for i =1:length(dir_im)
+image_name = dir_im(i).name;
+I = imread([inpath(1:end-5),image_name]);
+I = im2double(I);
+[pb,theta] = pbCGTG(I);
+save([matpath,image_name,'_pb.mat'],'pb');
+imwrite(pb,['image/',image_name,'_pb.bmp'],'bmp');
+end
+
